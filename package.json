@@ -1,0 +1,34 @@
+{
+  "name": "sentinel-incident-platform",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "desktop/main.mjs",
+  "scripts": {
+    "desktop": "electron .",
+    "dev": "concurrently -k -n api,web -c green,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --prefix apps/api",
+    "dev:web": "npm run dev --prefix apps/web",
+    "dev:mobile": "npm --prefix apps/mobile start",
+    "setup": "node scripts/setup.mjs",
+    "connect:atlas": "node scripts/connect-atlas.mjs",
+    "start": "node scripts/start-local.mjs",
+    "config:check": "node scripts/setup.mjs --check",
+    "db:up": "docker compose up -d mongo mongo-init",
+    "db:down": "docker compose stop mongo mongo-init",
+    "db:status": "docker compose ps mongo mongo-init",
+    "db:check": "node scripts/db-check.mjs",
+    "check:prod": "node scripts/production-check.mjs",
+    "check:compliance": "node scripts/compliance-check.mjs",
+    "check:load": "node scripts/load-check.mjs",
+    "seed:demo": "npm run seed --prefix apps/api",
+    "build": "npm run build --prefix apps/web",
+    "test": "npm test --prefix apps/api",
+    "lint": "npm run lint --prefix apps/web",
+    "typecheck:mobile": "npm run typecheck --prefix apps/mobile"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "electron": "^44.7.2"
+  }
+}
