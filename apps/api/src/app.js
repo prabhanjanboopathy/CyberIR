@@ -34,7 +34,7 @@ export function createApp() {
     callback(allowed ? null : new Error('Origin is not allowed by CORS'), { credentials: true, origin: allowed })
   }))
   app.use(express.json({ limit: '64kb' }))
-  app.get('/api/v1/health', (_req, res) => res.json({ status: 'ok', service: 'sentinel-api' }))
+  app.get('/api/v1/health', (_req, res) => res.json({ status: 'ok', service: 'cyberir-api' }))
   const credentialLimiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 20, standardHeaders: 'draft-7', legacyHeaders: false })
   app.use(['/api/v1/auth/login', '/api/v1/auth/password'], credentialLimiter)
   app.use('/api/v1/auth', authRoutes)
