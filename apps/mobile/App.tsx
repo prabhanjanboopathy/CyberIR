@@ -153,7 +153,7 @@ export default function App() {
       <StatusBar barStyle="dark-content" />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
-          <Text style={styles.kicker}>Sentinel Ops</Text>
+          <Text style={styles.kicker}>CyberIR</Text>
           <Text style={styles.title}>Mobile incident response</Text>
         </View>
 
