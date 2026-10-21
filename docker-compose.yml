@@ -1,0 +1,60 @@
+services:
+  mongo:
+    image: mongo:7.0
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - sentinel_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  mongo-init:
+    image: mongo:7.0
+    depends_on:
+      mongo:
+        condition: service_healthy
+    entrypoint: ["mongosh", "--host", "mongo:27017", "--quiet", "--eval"]
+    command:
+      - "try { rs.status() } catch (error) { rs.initiate({ _id: 'rs0', members: [{ _id: 0, host: 'mongo:27017' }] }); } while (rs.status().myState !== 1) { sleep(500); }"
+    restart: "no"
+
+  api:
+    build:
+      context: ./apps/api
+    container_name: sentinel-api
+    env_file:
+      - ./apps/api/.env
+    environment:
+      NODE_ENV: development
+      PORT: 4000
+      MONGODB_URI: mongodb://mongo:27017/sentinel?replicaSet=rs0
+      CORS_ORIGINS: http://localhost:4173
+      WEB_BASE_URL: http://localhost:4173
+      SEED_DEMO: "true"
+    depends_on:
+      mongo-init:
+        condition: service_completed_successfully
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./apps/web
+      args:
+        VITE_API_URL: http://localhost:4000/api/v1
+    container_name: sentinel-web
+    depends_on:
+      api:
+        condition: service_started
+    ports:
+      - "4173:4173"
+    restart: unless-stopped
+
+volumes:
+  sentinel_mongo_data:
