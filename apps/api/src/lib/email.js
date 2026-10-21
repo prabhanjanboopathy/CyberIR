@@ -17,7 +17,7 @@ function getSmtpTransport() {
 }
 
 export async function deliverEmail({ to, subject, text, html }) {
-  const from = process.env.MAIL_FROM ?? 'Sentinel Ops <no-reply@localhost>'
+  const from = process.env.MAIL_FROM ?? 'CyberIR <no-reply@localhost>'
   if (process.env.MAIL_HOST) {
     return getSmtpTransport().sendMail({ from, to, subject, text, html })
   }
