@@ -1,6 +1,6 @@
-﻿services:
+services:
   - type: web
-    name: sentinel-ops
+    name: cyberir
     runtime: docker
     plan: free
     healthCheckPath: /api/v1/health
