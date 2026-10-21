@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: sentinel-api
+    name: cyberir-api
     env: node
     plan: free
     buildCommand: npm ci --omit=dev
@@ -17,7 +17,7 @@ services:
       - key: MONGODB_URI
         sync: false
       - key: CORS_ORIGINS
-        value: https://sentinel-web.example.com
+        value: https://cyberir-web.example.com
       - key: DEMO_PASSWORD
         sync: false
       - key: DEMO_ORG_SLUG
