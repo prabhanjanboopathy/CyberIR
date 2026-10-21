@@ -1,4 +1,4 @@
-﻿# Sentinel Ops
+# CyberIR
 
 Role-based cyber incident reporting and response platform. React (Vite) web client + Express/MongoDB API with Socket.io live updates. Design notes: [docs/SECURITY_INCIDENT_PLATFORM_DESIGN.md](docs/SECURITY_INCIDENT_PLATFORM_DESIGN.md).
 
@@ -10,7 +10,7 @@ Role-based cyber incident reporting and response platform. React (Vite) web clie
 ## Run as a local app (no Docker)
 
 ```powershell
-npm.cmd run start      # or double-click "Sentinel Ops.cmd"
+npm.cmd run start      # or double-click "CyberIR.cmd"
 ```
 
 This builds the web client once, starts the API with an embedded MongoDB, and opens http://localhost:4000, where the API and UI share one URL. Data is kept between runs in `apps/api/var/db` (delete that folder to reset to the demo data). The first run downloads the MongoDB binary and builds the UI, so it takes a little longer. Use `npm.cmd run start -- --rebuild` after changing the web code. Set `PORT` to change the port.
@@ -18,10 +18,10 @@ This builds the web client once, starts the API with an embedded MongoDB, and op
 ## Run as a desktop app (no Docker)
 
 ```powershell
-npm.cmd run desktop    # or double-click "Sentinel Ops Desktop.cmd"
+npm.cmd run desktop    # or double-click "CyberIR Desktop.cmd"
 ```
 
-Opens Sentinel Ops in its own window. It starts the API and an embedded MongoDB, and stops them when the window closes. Data is kept in `%APPDATA%\sentinel-incident-platform\db`. The first run downloads Electron and MongoDB, so it takes longer. Both `start` and `desktop` use port 4000, so run only one at a time.
+Opens CyberIR in its own window. It starts the API and an embedded MongoDB, and stops them when the window closes. Data is kept in `%APPDATA%\cyberir\db`. The first run downloads Electron and MongoDB, so it takes longer. Both `start` and `desktop` use port 4000, so run only one at a time.
 
 ## Run (development with Docker MongoDB)
 
@@ -62,7 +62,7 @@ To point Compass at Atlas instead of local Mongo, use the same connection string
 2. On https://render.com choose New > Blueprint and select the repo. It reads `render.yaml` and builds the root `Dockerfile` (web UI and API in one service).
 3. Set `MONGODB_URI` (Atlas string), `DEMO_PASSWORD` (12+ chars) and `MFA_ENCRYPTION_KEY` (`node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"`). In Atlas Network Access allow `0.0.0.0/0`, since Render's IPs change.
 4. Run `npm run seed:demo` once locally against the same Atlas URI to create the demo users.
-5. The link is `https://sentinel-ops.onrender.com` (or the name Render assigns). The production build disables one-click quick sign-in, so sign in with a demo email and `DEMO_PASSWORD`.
+5. The link is `https://cyberir.onrender.com` (or the name Render assigns). The production build disables one-click quick sign-in, so sign in with a demo email and `DEMO_PASSWORD`.
 
 ## Roles
 
