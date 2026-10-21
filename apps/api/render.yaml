@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: sentinel-api
+    env: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_ACCESS_SECRET
+        sync: false
+      - key: MFA_ENCRYPTION_KEY
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: CORS_ORIGINS
+        value: https://sentinel-web.example.com
+      - key: DEMO_PASSWORD
+        sync: false
+      - key: DEMO_ORG_SLUG
+        value: northstar
