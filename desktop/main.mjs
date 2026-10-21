@@ -25,7 +25,7 @@ async function startServer() {
 
 app.whenReady().then(async () => {
   await startServer()
-  const window = new BrowserWindow({ width: 1280, height: 840, title: 'Sentinel Ops', autoHideMenuBar: true })
+  const window = new BrowserWindow({ width: 1280, height: 840, title: 'CyberIR', autoHideMenuBar: true })
   window.webContents.setWindowOpenHandler(({ url: target }) => {
     shell.openExternal(target)
     return { action: 'deny' }
