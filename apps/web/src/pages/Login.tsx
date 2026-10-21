@@ -64,7 +64,7 @@ export default function Login({ onSignedIn }: { onSignedIn: (user: SessionUser) 
     <main className="login">
       <div className="login-stack">
         <form className="card login-card" onSubmit={submit}>
-          <h1><ShieldCheck size={24} /> Sentinel Ops</h1>
+          <h1><ShieldCheck size={24} /> CyberIR</h1>
           <p className="muted">Sign in to report and respond to cyber incidents.</p>
           <Field label="Email"><input type="email" required autoComplete="username" value={email} onChange={(event) => setEmail(event.target.value)} /></Field>
           <Field label="Password"><input type="password" required autoComplete="current-password" value={password} onChange={(event) => setPassword(event.target.value)} /></Field>
