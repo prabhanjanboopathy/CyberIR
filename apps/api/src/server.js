@@ -62,7 +62,7 @@ io.on('connection', (socket) => {
 })
 
 const port = Number(process.env.PORT ?? 4000)
-server.listen(port, () => console.log(`Sentinel API listening on http://localhost:${port}`))
+server.listen(port, () => console.log(`CyberIR API listening on http://localhost:${port}`))
 
 async function shutdown() {
   server.close()
