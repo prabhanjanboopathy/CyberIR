@@ -1,0 +1,11 @@
+node_modules/
+**/node_modules/
+**/dist/
+**/var/evidence/
+**/var/mail/
+**/var/db/
+**/.env
+**/.env.*
+!**/.env.example
+coverage/
+.DS_Store
