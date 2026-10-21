@@ -22,7 +22,7 @@ for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => server.kill
 
 for (let attempt = 0; attempt < 120; attempt += 1) {
   if (await fetch(`${url}/api/v1/health`).then((response) => response.ok, () => false)) {
-    console.log(`\nSentinel Ops is running at ${url} (press Ctrl+C to stop)`)
+    console.log(`\nCyberIR is running at ${url} (press Ctrl+C to stop)`)
     if (process.platform === 'win32') spawn('cmd', ['/c', 'start', '', url], { stdio: 'ignore' }).unref()
     break
   }
