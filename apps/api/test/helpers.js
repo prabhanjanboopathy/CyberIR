@@ -5,8 +5,8 @@ import request from 'supertest'
 
 process.env.JWT_ACCESS_SECRET = 'test-access-secret-that-is-at-least-32-characters-long'
 process.env.MFA_ENCRYPTION_KEY = Buffer.alloc(32, 9).toString('base64')
-process.env.EVIDENCE_LOCAL_DIR = await mkdtemp(join(tmpdir(), 'sentinel-evidence-'))
-process.env.DEV_MAIL_DIR = await mkdtemp(join(tmpdir(), 'sentinel-mail-'))
+process.env.EVIDENCE_LOCAL_DIR = await mkdtemp(join(tmpdir(), 'cyberir-evidence-'))
+process.env.DEV_MAIL_DIR = await mkdtemp(join(tmpdir(), 'cyberir-mail-'))
 
 export const DEMO_PASSWORD = 'Demo-password-123!'
 
