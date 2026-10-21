@@ -14,7 +14,7 @@ if (!existsSync(envPath)) {
 }
 
 console.log(`
-Connect Sentinel Ops to MongoDB Atlas
+Connect CyberIR to MongoDB Atlas
 --------------------------------------
 1. Sign in at https://cloud.mongodb.com and create a free (M0) cluster if you don't have one.
 2. Under Database Access, create a database user with a password (Atlas > Security > Database Access).
