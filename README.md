@@ -62,7 +62,7 @@ To point Compass at Atlas instead of local Mongo, use the same connection string
 2. On https://render.com choose New > Blueprint and select the repo. It reads `render.yaml` and builds the root `Dockerfile` (web UI and API in one service).
 3. Set `MONGODB_URI` (Atlas string), `DEMO_PASSWORD` (12+ chars) and `MFA_ENCRYPTION_KEY` (`node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"`). In Atlas Network Access allow `0.0.0.0/0`, since Render's IPs change.
 4. Run `npm run seed:demo` once locally against the same Atlas URI to create the demo users.
-5. The link is `https://cyberir.onrender.com` (or the name Render assigns). The production build disables one-click quick sign-in, so sign in with a demo email and `DEMO_PASSWORD`.
+5. Live at https://cyberir-ygyu.onrender.com (free tier; the first visit after idle takes about a minute). The production build disables one-click quick sign-in, so sign in with a demo email and `DEMO_PASSWORD`.
 
 ## Roles
 
