@@ -56,7 +56,7 @@ export default function Layout({ nav }: { nav: NavItem[] }) {
   return (
     <div className="shell">
       <header className="topbar">
-        <strong className="brand"><ShieldCheck size={20} /> Sentinel Ops</strong>
+        <strong className="brand"><ShieldCheck size={20} /> CyberIR</strong>
         <div className="topbar-user">
           {user.level === 1 && <AvailabilityToggle />}
           <span>{user.name}</span>
