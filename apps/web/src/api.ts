@@ -101,8 +101,8 @@ export type Summary = {
 export type UserInput = Partial<Pick<ManagedUser, 'name' | 'level' | 'isActive' | 'specialties' | 'maxActiveCases' | 'availability'>> & { password?: string }
 
 type Tokens = { accessToken: string; refreshToken: string }
-const ACCESS_KEY = 'sentinel-access-token'
-const REFRESH_KEY = 'sentinel-refresh-token'
+const ACCESS_KEY = 'cyberir-access-token'
+const REFRESH_KEY = 'cyberir-refresh-token'
 
 export const getAccessToken = () => sessionStorage.getItem(ACCESS_KEY)
 export const hasSession = () => Boolean(sessionStorage.getItem(REFRESH_KEY))
