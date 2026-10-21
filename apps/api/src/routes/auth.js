@@ -122,7 +122,7 @@ router.post('/password/forgot', asyncHandler(async (req, res) => {
     try {
       await deliverEmail({
         to: user.email,
-        subject: 'Reset your Sentinel Ops password',
+        subject: 'Reset your CyberIR password',
         text: `A password reset was requested. This link expires in 60 minutes: ${resetUrl}`,
         html: `<p>A password reset was requested.</p><p><a href="${resetUrl}">Reset your password</a></p><p>This link expires in 60 minutes.</p>`,
       })
@@ -159,7 +159,7 @@ router.post('/mfa/enroll', authenticate, asyncHandler(async (req, res) => {
   const secret = generateSecret()
   user.pendingMfaSecretEncrypted = encryptMfaSecret(secret)
   await user.save()
-  const otpauthUrl = generateURI({ issuer: 'Sentinel Ops', label: user.email, secret })
+  const otpauthUrl = generateURI({ issuer: 'CyberIR', label: user.email, secret })
   const qrCodeDataUrl = await QRCode.toDataURL(otpauthUrl, { errorCorrectionLevel: 'M', margin: 1, width: 240 })
   res.json({ data: { secret, otpauthUrl, qrCodeDataUrl }, requestId: req.id })
 }))
