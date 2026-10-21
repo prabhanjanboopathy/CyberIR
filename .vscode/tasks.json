@@ -2,7 +2,7 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Sentinel API (local MongoDB)",
+			"label": "CyberIR API (local MongoDB)",
 			"type": "shell",
 			"command": "npm.cmd",
 			"args": [
