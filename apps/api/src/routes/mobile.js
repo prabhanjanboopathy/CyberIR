@@ -56,7 +56,7 @@ router.post('/send-test', asyncHandler(async (req, res) => {
   const notifications = [{
     to: user.pushToken,
     sound: 'default',
-    title: 'Sentinel Ops',
+    title: 'CyberIR',
     body: `${user.name}, a new incident requires your attention.`,
     data: { screen: 'incidents' },
   }]
