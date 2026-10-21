@@ -22,6 +22,7 @@ export function createApp() {
   const app = express()
   const origins = (process.env.CORS_ORIGINS ?? 'http://localhost:5173').split(',').map((item) => item.trim())
   app.disable('x-powered-by')
+  app.set('trust proxy', 1)
   app.use((req, res, next) => {
     req.id = req.headers['x-request-id']?.toString().slice(0, 100) || crypto.randomUUID()
     res.setHeader('X-Request-Id', req.id)
